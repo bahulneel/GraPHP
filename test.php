@@ -32,16 +32,16 @@ class Topic extends Vertex implements Followable
 { }
 
 $user = new User('u');
+$user2 = new User('u2');
 
 $topic = new Topic('t');
 
 $follow = new Follows( $user, $topic );
 
-print_r($follow);
+$follow = new Follows( $user2, $user );
+
 print_r($topic);
 
-$user2 = new User('u2');
-$follow = new Follows( $user, $user2 );
+// Explode
+$follow = new Follows( $user, $user );
 
-print_r($follow);
-print_r($user2);
