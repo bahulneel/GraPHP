@@ -1,5 +1,7 @@
 <?php
 
+namespace TestGraph;
+
 require_once('library/GraPHP/Edge/Possible.php');
 require_once('library/GraPHP/Vertex/From.php');
 require_once('library/GraPHP/Vertex/To.php');
@@ -25,26 +27,29 @@ class Follows extends Verb
 	}
 }
 
-class User extends Vertex implements CanFollow, Followable
+class Actor extends Vertex implements CanFollow, Followable
+{ }
+
+class Person extends Actor
 { }
 
 class Topic extends Vertex implements Followable
 { }
 
-$user = new User('u');
-$user2 = new User('u2');
+$person = new Person('u');
+$person2 = new Person('u2');
 
 $topic = new Topic('t');
 
-new Follows( $user, $topic );
+new Follows( $person, $topic );
 
-new Follows( $user2, $user );
+new Follows( $person2, $person );
 
-print_r($topic);
+var_dump($topic);
 
 // Crazy
 try {
-	new Follows( $user, $user );
+	new Follows( $person, $person );
 }
 catch ( \Exception $e )
 {
@@ -52,8 +57,9 @@ catch ( \Exception $e )
 }
 
 // Awesome
-new Follows( $user, $topic );
-print_r($topic);
+new Follows( $person, $topic );
+
+var_dump($topic);
 
 // Crazy Awesome
-new Follows( $topic, $user );
+new Follows( $topic, $person );

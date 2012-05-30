@@ -13,6 +13,6 @@ class Edge implements Edge\Possible
 
 	public function getDescriptor()
 	{
-		return $this->inbound->getUuid() . '[' . get_class($this) . ']';
+		return $this->inbound->getUuid() . ':' . get_class($this);
 	}
 }
