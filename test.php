@@ -36,12 +36,24 @@ $user2 = new User('u2');
 
 $topic = new Topic('t');
 
-$follow = new Follows( $user, $topic );
+new Follows( $user, $topic );
 
-$follow = new Follows( $user2, $user );
+new Follows( $user2, $user );
 
 print_r($topic);
 
-// Explode
-$follow = new Follows( $user, $user );
+// Crazy
+try {
+	new Follows( $user, $user );
+}
+catch ( \Exception $e )
+{
+	error_log('Crazy!');
+}
 
+// Awesome
+new Follows( $user, $topic );
+print_r($topic);
+
+// Crazy Awesome
+new Follows( $topic, $user );
