@@ -21,9 +21,9 @@ interface CanFollow extends Vertex\From
 
 class Follows extends Verb
 {
-	public function __construct( CanFollow $follower, Followable $vertex )
+	public function __construct( CanFollow $follower, Followable $followee )
 	{
-		parent::__construct($follower, $vertex);
+		parent::__construct($follower, $followee);
 	}
 }
 
